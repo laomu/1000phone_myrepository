@@ -1,0 +1,20 @@
+.cart_table{padding:0px;list-style:none;width:100%;border:#efefef solid 1px;}
+.cart_table_title{padding:0px;height:50px;}
+
+.cart_table > li {float:left;width:100px;height:110px;line-height:100px;text-align:center;}
+.cart_table_title > li{line-height:50px;font-weight:bold;}
+.subtotal{font-size:16px;color:red}
+li.first{width:40px;}
+li.second{width:150px;}
+li.second > img{width:100px;height:100px;}
+li.third{width:200px;}
+li.third>p{height:120px;padding-top:30px;}
+li.four{width:100px;}
+li.five{width:120px;}
+li.six{width:120px;}
+li.subtotal{width:100px;}
+
+.cart-choose-address{width:800px;border:#efefef solid 1px;padding:15px;}
+.cca-title{font-size:16px;padding-bottom:10px;border-bottom:#efefef solid 5px;}
+.cca-addr > address{margin-top:10px;font-size:14px;}
+.cca-add-addr{margin-top:10px;}
