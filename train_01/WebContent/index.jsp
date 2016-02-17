@@ -115,8 +115,10 @@
 					</div>
 				</div>
                     <div class="search-block">
-                      <input type="text" value="在这里搜索您想要的商品" />
+					<form method="post" action="${pageContext.request.contextPath}/dopage/dosearch.jsp">
+                      <input type="text" name="keyword" value="在这里搜索您想要的商品" />
                       <input type="submit" value="搜索商品" title="搜索商品" />
+                    </form>
                     </div>
                   </section>
                 </div>

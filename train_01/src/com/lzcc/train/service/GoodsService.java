@@ -170,5 +170,22 @@ public class GoodsService {
 		}
 	}
 	
+	/**
+	 * ËÑË÷ÉÌÆ·
+	 * @param keyword ËÑË÷¹Ø¼ü×Ö
+	 * @return
+	 */
+	public List<Goods> searchGoods(String keyword) {
+		return new BaseService<List<Goods>>(){
+
+			@Override
+			public List<Goods> service(Connection conn) throws SQLException {
+				
+				goodsList = goodsDAO.findByConndition(conn, FindType.GOODS_SEARCH, keyword);
+				
+				return goodsList;
+			}}.doService();
+	}
+	
 }
  

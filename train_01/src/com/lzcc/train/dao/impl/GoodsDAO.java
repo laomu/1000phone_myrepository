@@ -76,6 +76,8 @@ public class GoodsDAO implements IDAO<Goods> {
 	public List<Goods> findByConndition(Connection conn, FindType type, Object... objs) throws SQLException {
 		if (type == FindType.GOODS_SHOP) {
 			return this.findByShop(conn, objs);
+		} else if (type == FindType.GOODS_SEARCH) {
+			return this.findBySearch(conn, objs);
 		}
 		return null;
 	}
@@ -85,6 +87,14 @@ public class GoodsDAO implements IDAO<Goods> {
 	private List<Goods> findByShop(Connection conn, Object... objs) throws SQLException {
 		sql = "select * from goods where sid = ?";
 		return dh.executeQuery(conn, mapper, sql, objs);
+	}
+	
+	/*
+	 * 根据商店搜索商店中的所有商品
+	 */
+	private List<Goods> findBySearch(Connection conn, Object... objs) throws SQLException {
+		sql = "select * from goods where gname like ?";
+		return dh.executeQuery(conn, mapper, sql, "%".concat((String)objs[0]).concat("%"));
 	}
 
 	@Override
