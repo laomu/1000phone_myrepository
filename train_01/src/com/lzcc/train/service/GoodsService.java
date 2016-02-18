@@ -14,6 +14,7 @@ import com.lzcc.train.model.ActivityType;
 import com.lzcc.train.model.Goods;
 import com.lzcc.train.model.GoodsImage;
 import com.lzcc.train.model.GoodsType;
+import com.lzcc.train.utils.DeleteType;
 import com.lzcc.train.utils.FindType;
 
 /**
@@ -168,6 +169,30 @@ public class GoodsService {
 		} finally {
 			ConnectionManager.free(conn);
 		}
+	}
+	
+	/**
+	 * 根据商店编号，删除商店中的所有商品
+	 * @param sid
+	 */
+	@SuppressWarnings("rawtypes")
+	public void deleteByShop(String sid) {
+		// 删除购物对象和商品图片
+		goodsList = this.findByShop(sid);
+		for (int i = 0; i < goodsList.size(); i++) {
+			String goodsId = String.valueOf(goodsList.get(i).getGid());
+			new ShopcartService().deleteByGoods(goodsId);// 删除购物对象
+			giService.goodsImageDelete(goodsId);// 删除商品图片
+		}
+		
+		// 删除商品
+		new BaseService(){
+
+			@Override
+			public Object service(Connection conn) throws SQLException {
+				goodsDAO.deleteByCondition(conn, DeleteType.GOODS_SHOP, Integer.parseInt(sid));
+				return null; 
+			}}.doService();
 	}
 	
 	/**

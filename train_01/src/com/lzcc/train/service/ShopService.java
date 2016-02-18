@@ -90,13 +90,14 @@ public class ShopService {
 			conn = ConnectionManager.getConnection();
 			
 			// 删除商店中的所有商品
-			List<Goods> list = goodsService.findByShop(sid);
+			/*List<Goods> list = goodsService.findByShop(sid);
 			
 			if (list != null && list.size() > 0) {
 				for (int i = 0; i < list.size(); i++) {
 					goodsService.goodsDelete(String.valueOf(list.get(i).getGid()));
 				}
-			}
+			}*/
+			goodsService.deleteByShop(sid);
 			
 			// 删除商店
 			shopDAO.delete(conn, Integer.parseInt(sid));

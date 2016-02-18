@@ -11,5 +11,6 @@ package com.lzcc.train.utils;
  * @see http://blog.csdn.net/muwenbin_flex
  */
 public enum DeleteType {
-	SHOPCART_GOODS
+	SHOPCART_GOODS,
+	GOODS_SHOP
 }

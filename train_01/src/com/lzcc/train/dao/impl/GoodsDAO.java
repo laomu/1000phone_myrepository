@@ -99,8 +99,17 @@ public class GoodsDAO implements IDAO<Goods> {
 
 	@Override
 	public int deleteByCondition(Connection conn, DeleteType type, Object... objs) throws SQLException {
-		// TODO Auto-generated method stub
+		if (type == DeleteType.GOODS_SHOP) {
+			this.deleteByShop(conn, objs);
+		}
 		return 0;
+	}
+	/*
+	 * 根据商店编号删除商店中所有商品
+	 */
+	private int deleteByShop(Connection conn, Object... objs) throws SQLException {
+		sql = "delete from goods where sid = ?";
+		return dh.executeSQL(conn, sql, objs);
 	}
 
 }
