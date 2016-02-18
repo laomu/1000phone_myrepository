@@ -62,9 +62,6 @@
 	
 	// 将订单保存到request中，跳转到下一个页面
 	request.setAttribute("order", order);
-	request.getRequestDispatcher("../orderdetals.jsp").forward(request, response);
-	
-	// 保存到数据库
-	
+	request.getRequestDispatcher("../orderdetails.jsp").forward(request, response);
 	
 %>
