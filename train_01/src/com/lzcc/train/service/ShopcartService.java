@@ -84,4 +84,18 @@ public class ShopcartService {
 				return null;
 			}}.doService();
 	}
+	
+	/**
+	 * 根据编号查询购物对象
+	 * @param scid
+	 * @return
+	 */
+	public Shopcart findById(String scid) {
+		return new BaseService<Shopcart>(){
+
+			@Override
+			public Shopcart service(Connection conn) throws SQLException {
+				return dao.findById(conn, Integer.parseInt(scid));
+			}}.doService();
+	}
 }

@@ -59,7 +59,11 @@ public class ShopcartDAO implements IDAO<Shopcart>{
 
 	@Override
 	public Shopcart findById(Connection conn, int id) throws SQLException {
-		// TODO Auto-generated method stub
+		sql = "select * from shopcart where scid = ?";
+		sclist = dh.executeQuery(conn, mapper, sql, id);
+		if (sclist !=null && sclist.size() > 0) {
+			return sclist.get(0);
+		}
 		return null;
 	}
 

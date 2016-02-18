@@ -5,6 +5,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.lzcc.train.dao.IDAO;
+import com.lzcc.train.dbhelper.DBHelper;
+import com.lzcc.train.mapper.IMapper;
+import com.lzcc.train.mapper.impl.OrderItemMapper;
 import com.lzcc.train.model.OrderItem;
 import com.lzcc.train.utils.DeleteType;
 import com.lzcc.train.utils.FindType;
@@ -21,11 +24,17 @@ import com.lzcc.train.utils.FindType;
  * @see http://blog.csdn.net/muwenbin_flex
  */
 public class OrderItemDAO implements IDAO<OrderItem>{
+	
+	private String sql;
+	private OrderItem oi;
+	private List<OrderItem> oilist;
+	private IMapper<OrderItem> mapper = new OrderItemMapper();
+	private DBHelper<OrderItem> dh = new DBHelper<OrderItem>();
 
 	@Override
 	public int add(Connection conn, OrderItem t) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		sql = "insert into `orderitem`(oid, gid, buyCount, dealPrice, subtotal)values(?,?,?,?,?)";
+		return dh.executeInsert(conn, sql, t.getOrder().getOid(),t.getGoods().getGid(),t.getBuyCount(),t.getDealPrice(),t.getSubTotal());
 	}
 
 	@Override

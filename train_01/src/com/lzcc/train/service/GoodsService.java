@@ -146,11 +146,12 @@ public class GoodsService {
 	 */
 	public void goodsDelete(String gid) {
 		try {
+			goods = this.findById(gid);
+
 			conn = ConnectionManager.getConnection();
 			// 删除购物车中所有商品的引用对象
 			new ShopcartService().deleteByGoods(String.valueOf(gid));
 			
-			goods = this.findById(gid);
 			
 			List<GoodsImage> giList = goods.getGiList();
 			
@@ -161,8 +162,6 @@ public class GoodsService {
 				}
 			}
 			
-			//删除商品// 由于152行调用当前类的方法，数据库连接被关闭了，这里重新获取一次
-			conn = ConnectionManager.getConnection();
 			goodsDAO.delete(conn, goods.getGid());
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -201,6 +201,7 @@
 	List<Address> addrlist = (List<Address>) request.getAttribute("addrlist");
 %>
 <section class="content-wrapper">
+	<form method="post" action="${pageContext.request.contextPath}/dopage/dopay.jsp">
 	<div class="content-container container">
 		<div class="col-1-layout">
 			<ul class="shopping-cart-table cart_table cart_table_title">
@@ -219,7 +220,7 @@
 					Shopcart sc = sclist.get(i);
 			%>
 			<ul class="cart_table">
-				<li class="first"><input type="checkbox"></li>
+				<li class="first"><input type="checkbox" name="shopid" value="<%=sc.getScId()%>"></li>
 				<li class="second">
 					<img src="${pageContext.request.contextPath}/<%=sc.getGoods().getGiList().get(0).getPath() %>">
 				</li>
@@ -239,6 +240,12 @@
 			</ul> 
 			<%} %>
 			<div class="update-shopping-cart">
+				<%
+					String error = (String) request.getAttribute("ERROR_SHOP");
+					if(error != null) {
+						out.println("<span style='color:red;font-size:12px'>" + error + "</span>");
+					}
+				%>
 				<button class="orange-btn" onclick="window.location='${pageContext.request.contextPath}/dopage/dofindcart.jsp'">更新购物车</button></div>
 			<div class="shopping-cart-collaterals">
 				<div class="cart-choose-address">
@@ -250,11 +257,11 @@
 								Address addr = addrlist.get(i);
 								if(addr.isStatus()) {
 						%>
-						<address><input type="radio" name="addr" checked value="<%=addr%>"><%=addr %></address>
+						<address><input type="radio" name="addr" checked value="<%=addr.getAid()%>"><%=addr %></address>
 						<%}else {%>
-						<address><input type="radio" name="addr" value="<%=addr%>"><%=addr %></address>
+						<address><input type="radio" name="addr" value="<%=addr.getAid()%>"><%=addr %></address>
 						<%}}} else { %>
-						<li>当前用户还没有设置收货地址，请<a href="${pageContext.request.contextPath }/dopage/dofindaddr.jsp">完善收货地址</a></li>
+						当前用户还没有设置收货地址，请<a href="${pageContext.request.contextPath }/dopage/dofindaddr.jsp">完善收货地址</a>
 						<%} %>
 					</div>
 					<div class="cca-add-addr">
@@ -265,11 +272,12 @@
 			<div class="shopping-cart-totals">
 				<div class="grand-row"><div class="left">总计</div><div class="right">$1,000.00</div></div>
 				<ul class="checkout-types">
-					<li><button class="orange-btn" title="Proceed to Checkout">立即购买</button></li>
+					<li><input type="submit" value="立即购买" class="orange-btn"/></li>
 				</ul>
 			</div>
 
 		<div class="clearfix"></div>
+		
 		<div class="news-letter-container">
 		  <div class="free-shipping-block">
 			<h1>我们致力于做的更好</h1>
@@ -282,6 +290,7 @@
 		  </div>
 		</div>
 	</div>
+	</form>
 </section>
 </div>
 <!--Footer Block-->

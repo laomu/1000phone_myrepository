@@ -20,6 +20,18 @@ public class OrderItem {
 	private double dealPrice;// 成交价格
 	private double subTotal;// 小计价格
 
+	public OrderItem(Order order, Goods goods, int buyCount, double dealPrice, double subTotal) {
+		super();
+		this.order = order;
+		this.goods = goods;
+		this.buyCount = buyCount;
+		this.dealPrice = dealPrice;
+		this.subTotal = subTotal;
+	}
+
+	public OrderItem() {
+	}
+
 	public int getOiId() {
 		return oiId;
 	}
