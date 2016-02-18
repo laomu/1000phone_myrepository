@@ -1,0 +1,47 @@
+.doclistbox{
+    margin:0 auto;
+    width:100%;
+    border-bottom:#3D8CC9 solid 6px;
+    border-top:#3D8CC9 solid 6px;
+    padding-bottom:10px;
+}
+.doclist{
+    margin:0 auto;
+    width:1200px;
+    /*background-color: #ccc;*/
+}
+.doclist > ul{
+    width:100%;
+    border:#ccc solid 1px;
+    /*background-color:#ddd;*/
+}
+.doclist > ul > li{
+    font-size:18px;
+    border-bottom: #069 dashed 1px;
+    width:98%;
+    height:36px;
+    line-height: 36px;
+}
+.doclist > ul > li > a{
+    float:right;
+    margin-right:15px;
+}
+.doclist > ul > li > span{
+    float:right;
+    margin-right:60px;
+}
+.doclisttitle{
+    height:50px;
+    width:100%;
+    color:#fff;
+    font-size:22px;
+    line-height:50px;
+    background-color:#3D8CC9;
+    padding-left:10px;
+    margin-top:10px;
+}
+.doclisttitle >span {
+    float:right;
+    margin-right:60px;
+    font-size:16px;
+}

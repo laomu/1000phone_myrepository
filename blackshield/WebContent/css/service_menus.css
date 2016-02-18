@@ -1,0 +1,17 @@
+.service_menus{
+    width:120px;
+    height:130px;
+    position: absolute;
+    left:90px;
+    top:35px;
+    /*background-image: url(../images/service_menus.png);*/
+    background-color:#000;
+}
+.service_menus > li{
+    height:40px;
+    border-bottom:#c0c0c0 dotted 1px;
+}
+.service_menus > li > a{
+    line-height:40px;
+    color:#000000;
+}
