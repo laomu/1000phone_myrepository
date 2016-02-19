@@ -17,7 +17,7 @@
 	// 获取参数
 	String [] scids = request.getParameterValues("shopid");// 获取购买的购物对象编号
 	String aid = request.getParameter("addr");// 获取地址编号
-	String totalPrice = request.getParameter("totalPrice");
+	String totalPrice = request.getParameter("totalPrice");// 总金额
 	String pay = request.getParameter("pay");// 获取付款方式
 	if("1".equals(pay)) {
 		pay = "货到付款";

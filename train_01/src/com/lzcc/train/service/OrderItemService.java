@@ -2,10 +2,13 @@ package com.lzcc.train.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.lzcc.train.dao.IDAO;
 import com.lzcc.train.dao.impl.OrderItemDAO;
+import com.lzcc.train.model.Order;
 import com.lzcc.train.model.OrderItem;
+import com.lzcc.train.utils.FindType;
 
 /**
  * OrderItemService.java 
@@ -33,6 +36,20 @@ public class OrderItemService {
 			public Integer service(Connection conn) throws SQLException {
 				
 				return ioDAO.add(conn, orderItem);
+			}}.doService();
+	}
+	
+	/**
+	 * 根据订单查询订单中的每一项
+	 * @param order
+	 * @return
+	 */
+	public List<OrderItem> findByOrder(Order order) {
+		return new BaseService<List<OrderItem>>(){
+
+			@Override
+			public List<OrderItem> service(Connection conn) throws SQLException {
+				return ioDAO.findByConndition(conn, FindType.ORDERITEM_ORDER, order.getOid());
 			}}.doService();
 	}
 }

@@ -11,6 +11,7 @@ import com.lzcc.train.mapper.IMapper;
 import com.lzcc.train.model.Goods;
 import com.lzcc.train.model.Order;
 import com.lzcc.train.model.OrderItem;
+import com.lzcc.train.service.GoodsService;
 
 /**
  * OrderItemMapper.java 订单项目实体类映射关系类
@@ -26,14 +27,13 @@ import com.lzcc.train.model.OrderItem;
 public class OrderItemMapper implements IMapper<OrderItem>{
 	
 	private IDAO<Order> orderDAO = new OrderDAO();
-	private IDAO<Goods> goodsDAO = new GoodsDAO();
 
 	@Override
 	public OrderItem mapper(Connection conn, ResultSet rs) throws SQLException {
 		OrderItem orderItem = new OrderItem();
 		orderItem.setOiId(rs.getInt("oiid"));
 		orderItem.setOrder(orderDAO.findById(conn, rs.getInt("oid")));
-		orderItem.setGoods(goodsDAO.findById(conn, rs.getInt("gid")));
+		orderItem.setGoods(new GoodsService().findById(String.valueOf(rs.getInt("gid"))));
 		orderItem.setBuyCount(rs.getInt("buyCount"));
 		orderItem.setDealPrice(rs.getDouble("dealprice"));
 		orderItem.setSubTotal(rs.getDouble("subtotal"));

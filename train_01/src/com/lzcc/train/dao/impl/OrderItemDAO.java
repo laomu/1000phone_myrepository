@@ -63,8 +63,15 @@ public class OrderItemDAO implements IDAO<OrderItem>{
 
 	@Override
 	public List<OrderItem> findByConndition(Connection conn, FindType type, Object... objs) throws SQLException {
-		// TODO Auto-generated method stub
+		if (type == FindType.ORDERITEM_ORDER) {
+			return this.findByOrder(conn, objs);
+		}
 		return null;
+	}
+	
+	private List<OrderItem> findByOrder(Connection conn, Object... objs) throws SQLException {
+		sql = "select * from `orderitem` where oid = ?";
+		return dh.executeQuery(conn, mapper, sql, objs);
 	}
 
 	@Override

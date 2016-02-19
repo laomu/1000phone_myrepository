@@ -73,8 +73,15 @@ public class OrderDAO implements IDAO<Order>{
 
 	@Override
 	public List<Order> findByConndition(Connection conn, FindType type, Object... objs) throws SQLException {
-		// TODO Auto-generated method stub
+		if (type == FindType.ORDER_USER) {
+			return this.findByUser(conn, objs);
+		}
 		return null;
+	}
+	
+	private List<Order> findByUser(Connection conn, Object... objs) throws SQLException {
+		sql = "select * from `order` where uid = ? order by ordertime desc";
+		return dh.executeQuery(conn, mapper, sql, objs);
 	}
 
 	@Override
