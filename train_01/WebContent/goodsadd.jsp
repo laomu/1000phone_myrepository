@@ -57,7 +57,7 @@
               <header class="container">
                 <div class="head-right">
                       <ul class="top-nav">
-                            <li class=""><a href="404_error.html" title="My Account">我的账户</a></li>
+                            <li class=""><a href="404_error.html" title="My Account">我的账户</a></li><li class=""><a href="${pageContext.request.contextPath }/dopage/doorderfind.jsp" title="My Account">已经购买的宝贝</a></li>
                             <li class="my-wishlist"><a href="404_error.html" title="My Wishlist">我的收藏</a></li>
                             <li class="contact-us"><a href="contact_us.html" title="Contact Us">联系我们</a></li>
                             <li class="checkout"><a href="${pageContext.request.contextPath}/dopage/dofindcart.jsp" title="Checkout">购物车</a></li>
