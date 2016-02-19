@@ -35,7 +35,7 @@
 				购买数量:<%=oi.getBuyCount() %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				小计金额:<%=oi.getSubTotal() %>
 				</li>
-			<%}%>
+			<%}%> 
 			</ul>
 		<%}} else { %>
 		<div>当前用户还没有购买过商品</div>
